@@ -20,3 +20,10 @@ puts "Average Revenue: #{@total_revenue.to_f/@total_stores.to_f}"
 @num_stores_over1M = Store.where("annual_revenue > 1000000").count
 
 puts "Number of stores with over $1M sales: #{@num_stores_over1M}"
+
+# sanity check
+@stores_over1M = Store.where("annual_revenue > 1000000")
+@stores_over1M.each do |store|
+  print "Name: #{store.name}, "
+  puts "Annual Revenue: #{store.annual_revenue}"
+end

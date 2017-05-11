@@ -26,6 +26,10 @@ ActiveRecord::Schema.define do
   # note here the tables are destroyed and then recreated every time setup.rb is run
   drop_table :stores if ActiveRecord::Base.connection.table_exists?(:stores)
   drop_table :employees if ActiveRecord::Base.connection.table_exists?(:employees)
+  # setting up relation, Store has many employees
+  class Store < ActiveRecord::Base
+    has_many :employees
+  end
   create_table :stores do |t|
     t.column :name, :string
     t.column :annual_revenue, :integer
@@ -34,7 +38,8 @@ ActiveRecord::Schema.define do
     t.timestamps null: false
   end
   create_table :employees do |table|
-    table.references :store
+    table.belongs_to :store # every employee belongs to one store, note store is singular
+    # table.references :store # delete this line OK????
     table.column :first_name, :string
     table.column :last_name, :string
     table.column :hourly_rate, :integer
