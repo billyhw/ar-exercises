@@ -22,6 +22,7 @@ end
 @store6 = Store.find(6)
 
 # create 2 employees for each store
+# Richard Velosos will not be added due to validation on lowest hourly_rate
 @store1.employees.create(first_name: "Khurram", last_name: "Virani", hourly_rate: 60)
 @store1.employees.create(first_name: "Candy", last_name: "Dasani", hourly_rate: 70)
 @store2.employees.create(first_name: "Bob", last_name: "Monte", hourly_rate: 50)
