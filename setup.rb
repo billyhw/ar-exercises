@@ -26,10 +26,6 @@ ActiveRecord::Schema.define do
   # note here the tables are destroyed and then recreated every time setup.rb is run
   drop_table :stores if ActiveRecord::Base.connection.table_exists?(:stores)
   drop_table :employees if ActiveRecord::Base.connection.table_exists?(:employees)
-  # setting up relation, Store has many employees
-  class Store < ActiveRecord::Base
-    has_many :employees
-  end
   create_table :stores do |t|
     t.column :name, :string
     t.column :annual_revenue, :integer

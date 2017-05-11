@@ -19,3 +19,5 @@ puts @store1.annual_revenue
 puts "---- Check whether first entry in database is updated ----"
 puts Store.find(1).name
 puts Store.find(1).annual_revenue
+puts Store.find(1).mens_apparel
+puts Store.find(1).womens_apparel
