@@ -1,7 +1,7 @@
 require 'pry' # in case you want to use binding.pry
 require 'active_record'
-require_relative 'lib/store'
-require_relative 'lib/employee'
+require_relative 'lib/store' # need to set this up
+require_relative 'lib/employee' # neet to set this up
 
 # Output messages from Active Record to standard out
 ActiveRecord::Base.logger = Logger.new(STDOUT)
@@ -23,6 +23,7 @@ puts 'CONNECTED'
 puts 'Setting up Database (recreating tables) ...'
 
 ActiveRecord::Schema.define do
+  # note here the tables are destroyed and then recreated every time setup.rb is run
   drop_table :stores if ActiveRecord::Base.connection.table_exists?(:stores)
   drop_table :employees if ActiveRecord::Base.connection.table_exists?(:employees)
   create_table :stores do |t|
