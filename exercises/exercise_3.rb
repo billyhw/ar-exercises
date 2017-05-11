@@ -13,4 +13,4 @@ puts "----------"
 puts "Number of stores: #{Store.all.count}"
 puts Store.find(1).name
 puts Store.find(2).name
-puts Store.find(3).name
+# puts Store.find(3).name --> return error
