@@ -13,10 +13,19 @@ class Store < ActiveRecord::Base
   validates :womens_apparel, inclusion: { in: [true, false] }
   validate :one_of_mens_or_women_apparel_must_be_true
 
+  private
   def one_of_mens_or_women_apparel_must_be_true
     if !mens_apparel && !womens_apparel
       errors.add(:mens_apparel, "mens_ and womens_apparel can't be both false")
       errors.add(:womens_apparel, "mens_ and womens_apparel can't be both false")
     end
   end
+
+  before_destroy :check_empty_or_not_before_destroy
+
+  private
+  def check_empty_or_not_before_destroy
+    self.destroy! unless self.employees.all.count == 0
+  end
+
 end
